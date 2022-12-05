@@ -43,4 +43,4 @@ jobs:
           user-email: canary-backend@github.com
           target-branch: main          
           target-directory: raw-configs/canary-backend
-    
+          commit-message: "canary-deployment:${{ env.TAG }}"
