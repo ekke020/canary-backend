@@ -11,13 +11,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: get commit hash
+      - name: Run kustomize
         run: |
-          echo "TAG=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-      - name: Set the image tag
-        uses: mikefarah/yq@master
-        with:
-          cmd: yq -i '.spec.template.spec.containers.[0].image |= "ekke020/canary-backend:${{ env.TAG }}"' './kubernetes/canary-backend-deployment.yaml'
-      - name: print yml 
-        run: |
-          cat ./kubernetes/canary-backend-deployment.yaml
+          kubectl kustomize ./kubernetes/
