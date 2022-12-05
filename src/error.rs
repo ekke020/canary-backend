@@ -8,13 +8,13 @@ pub trait Error: fmt::Debug + fmt::Display {
 
 #[derive(Debug)]
 pub struct PathError {
-    message: String,
+    _message: String,
 }
 
 impl PathError {
     pub fn new(message: &str) -> Self {
         Self {
-            message: message.to_string(),
+            _message: message.to_string(),
         }
     }
 }

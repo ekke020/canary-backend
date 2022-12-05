@@ -1,22 +1,22 @@
 apiVersion: v1
 kind: Deployment
 metadata:
-  name: canary-backend
+  name: canary-backend-deployment
   labels:
-    run: canary-backend
+    deployment: canary-backend
 spec:
   selector:
     matchLabels:
-      run: canary-backend
+      app: canary-backend
     replicas: 2
   template:
     metadata:
       labels:
-        run: canary-backend
+        app: canary-backend
     spec:
       containers:
-        - image: ekke020/canary-backend:latest
-          name: canary-backend
+        - name: canary-backend
+          image: backend-image
           ports:
             - containerPort: 7878
               name: http

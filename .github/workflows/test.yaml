@@ -1,0 +1,20 @@
+name: Build/Push
+
+on:
+  push: 
+    branches:
+      - yq
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set the image tag
+        uses: mikefarah/yq@master
+        with:
+          cmd: yq -i '.spec.template.spec.containers.[0].image |= "ekke020/canary-backend:${{ GITHUB_SHA::7 }}"' './kubernetes/canary-backend-deployment.yaml'
+      - name: print yml 
+        run: |
+          cat ./kubernetes/canary-backend-deployment.yaml
