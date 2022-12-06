@@ -8,9 +8,11 @@ spec:
     kind: Deployment
     name: canary-backend-deployment
   service:
-    port: 7878
+    port: 8080
+    targetPort: 7878
   analysis:
-    interval: 1m
+    interval: 30s
+    threshold: 10
     maxWeight: 100
     stepWeight: 10
     metrics:
