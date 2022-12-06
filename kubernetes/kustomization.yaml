@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
 - canary-backend-service.yaml
 - canary-backend-deployment.yaml
-- release.yaml
