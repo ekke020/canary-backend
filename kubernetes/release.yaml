@@ -1,0 +1,15 @@
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: canary-backend-release
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: canary-backend-deployment
+  service:
+    port: 7878
+  analysis:
+    interval: 1m
+    maxWeight: 100
+    stepWeight: 10

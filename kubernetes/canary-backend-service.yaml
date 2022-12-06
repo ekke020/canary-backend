@@ -9,7 +9,6 @@ metadata:
   namespace: default
 
 spec:
-  type: NodePort
   selector:
     app: canary-backend
   ports:
