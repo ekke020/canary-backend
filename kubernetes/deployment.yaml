@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: canary-backend-deployment
+  name: canary-server
   labels:
     deployment: canary-backend
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: canary-backend
+      app: canary-server
   template:
     metadata:
       labels:
-        app: canary-backend
+        app: canary-server
     spec:
       containers:
-        - name: canary-backend
+        - name: canary-server
           image: image
           ports:
             - containerPort: 7878
