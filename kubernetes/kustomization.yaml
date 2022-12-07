@@ -4,3 +4,4 @@ namespace: backend
 resources:
 - service.yaml
 - deployment.yaml
+- canary.yaml
