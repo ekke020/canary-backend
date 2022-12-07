@@ -31,7 +31,7 @@ jobs:
       - name: Set the image tag
         uses: mikefarah/yq@master
         with:
-          cmd: yq -i '.spec.template.spec.containers.[0].image |= "ekke020/canary-backend:${{ env.TAG }}"' './kubernetes/canary-backend-deployment.yaml'
+          cmd: yq -i '.spec.template.spec.containers.[0].image |= "ekke020/canary-backend:${{ env.TAG }}"' './kubernetes/deployment.yaml'
       - name: Push manifest to deployments repo
         uses: cpina/github-action-push-to-another-repository@main
         env:
