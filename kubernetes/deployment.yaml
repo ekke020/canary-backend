@@ -5,12 +5,16 @@ metadata:
   labels:
     deployment: canary-backend
 spec:
-  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
   selector:
     matchLabels:
       app: canary-server
   template:
     metadata:
+      annotations:
+        linkerd.io/inject: enabled
       labels:
         app: canary-server
     spec:
