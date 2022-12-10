@@ -19,7 +19,7 @@ spec:
     targetPort: 7878
   analysis:
     # schedule interval (default 60s)
-    interval: 30s
+    interval: 10s
     # max number of failed metric checks before rollback
     threshold: 5
     # max traffic percentage routed to canary
