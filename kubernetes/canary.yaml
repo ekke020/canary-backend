@@ -4,16 +4,12 @@ metadata:
   name: canary-backend
   namespace: backend
 spec:
-  # deployment reference
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: canary-server
-  # the maximum time in seconds for the canary deployment
-  # to make progress before it is rollback (default 600s)
-  progressDeadlineSeconds: 60
+    name: backend
   service:
-    # ClusterIP port number
+    # service port number
     port: 8080
     # container port number or name (optional)
     targetPort: 7878
@@ -27,18 +23,13 @@ spec:
     maxWeight: 100
     # canary increment step
     # percentage (0-100)
-    stepWeight: 5
-    # Linkerd Prometheus checks
+    stepWeight: 10
     metrics:
     - name: request-success-rate
-      # minimum req success rate (non 5xx responses)
-      # percentage (0-100)
       thresholdRange:
         min: 99
       interval: 1m
     - name: request-duration
-      # maximum req duration P99
-      # milliseconds
       thresholdRange:
         max: 500
       interval: 30s
