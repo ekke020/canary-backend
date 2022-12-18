@@ -44,15 +44,3 @@ jobs:
           target-branch: main          
           target-directory: raw-configs/canary-backend
           commit-message: "canary-deployment:${{ env.TAG }}"
-      - name: Push manifest to flux-deployments repo
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
-          source-directory: 'kubernetes'
-          destination-github-username: 'ekke020'
-          destination-repository-name: 'flux-deployment'
-          user-email: canary-backend@github.com
-          target-branch: main          
-          target-directory: deployments/canary-backend
-          commit-message: "backend-deployment:${{ env.TAG }}"
